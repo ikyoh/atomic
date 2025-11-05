@@ -6,7 +6,17 @@ import Link from "next/link"
 import { useState } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
 
-export default function ProductsMobileMenu({ categories, productsByCategoryies }: { categories: object[], productsByCategoryies: object[] }) {
+interface Category {
+    id: number;
+    name: string;
+    slug: string;
+    parent: number;
+    acf: {
+        order?: number;
+    };
+}
+
+export default function ProductsMobileMenu({ categories }: { categories: Category[] }) {
 
     const [isActive, setIsActive] = useState(false)
 
@@ -20,7 +30,7 @@ export default function ProductsMobileMenu({ categories, productsByCategoryies }
                 >
                     {categories?.filter(f => f.parent === 0)?.sort((a, b) => (a.acf.order ?? 0) - (b.acf.order ?? 0)).map((category, index) => (
                         categories?.filter(f => f.parent === category.id).length === 0 ?
-                            <AccordionItem value={`item-${index}`} className="py-4">
+                            <AccordionItem key={`item-${index}`} value={`item-${index}`} className="py-4">
                                 <Link href={`/produits/${category.slug}`} className="text-sm text-white font-bold pl-5">
                                     {category.name}
                                 </Link>
@@ -35,7 +45,7 @@ export default function ProductsMobileMenu({ categories, productsByCategoryies }
                                 </AccordionTrigger>
                                 <AccordionContent className="flex flex-col gap-4 text-balance">
                                     {categories?.filter(f => f.parent === category.id)?.sort((a, b) => (a.acf.order ?? 0) - (b.acf.order ?? 0)).map((subcategory, index) => (
-                                        <Link href={`/produits/${category.slug}/${subcategory.slug}`} className="text-white text-sm font-bold pl-10">
+                                        <Link key={`key-${index}`} href={`/produits/${category.slug}/${subcategory.slug}`} className="text-white text-sm font-bold pl-10">
                                             {subcategory.name}
                                         </Link>
                                     ))}

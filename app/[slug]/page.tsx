@@ -24,7 +24,10 @@ export async function generateMetadata({
   const page = await getPageBySlug(slug);
 
   if (!page) {
-    return <NotFound />;
+    return {
+      title: "Page Not Found",
+      description: "The requested page could not be found.",
+    };
   }
 
 
@@ -76,10 +79,13 @@ export default async function Page({
   const page = await getPageBySlug(slug);
   const featuredMedia = page?.featured_media === 0 ? "" : await getFeaturedMediaById(page.featured_media);
 
-
-  const blocks = parse(page.content.raw);
-
   if (!page) return <NotFound />;
+
+  const parsedBlocks = parse(page.content.raw ? page.content.raw : "");
+  const blocks = parsedBlocks.map(block => ({
+    ...block,
+    attrs: block.attrs || {}
+  }));
   return (
     <>
 
@@ -87,7 +93,7 @@ export default async function Page({
       {page.acf.carrousel ?
         <HeroCarousel images={page.acf.carrousel} title={page.title.rendered} subtitle={page.acf.subtitle} />
         :
-        <Hero featuredURL={featuredMedia.source_url} title={page.title.rendered} subtitle={page.acf.subtitle} />
+        <Hero featuredURL={featuredMedia && typeof featuredMedia !== 'string' ? featuredMedia.source_url : ''} title={page.title.rendered} subtitle={page.acf.subtitle} />
       }
       <div id="content">
 

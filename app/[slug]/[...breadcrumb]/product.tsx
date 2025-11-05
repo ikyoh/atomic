@@ -15,7 +15,7 @@ export default async function Product({ slug, breadcrumb }: { slug: string, brea
     console.log('product', product)
     return (
         <>
-            <Hero featuredURL={featuredMedia.source_url} isProduct={true} />
+            <Hero featuredURL={featuredMedia ? featuredMedia.source_url : undefined} isProduct={true} />
             <Main id="content">
                 <Container>
                     <BreadCrumb breadcrumb={breadcrumb} productTitle={product.title.rendered} />

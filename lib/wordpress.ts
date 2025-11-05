@@ -203,7 +203,7 @@ export async function getPostById(id: number): Promise<Post> {
 
 export async function getAchievementBySlug(slug: string): Promise<Post> {
   const url = getUrl(`/wp-json/wp/v2/realisations?slug=${slug}`);
-  const response = await wordpressFetch<Post>(url, {
+  const response = await wordpressFetch<Post[]>(url, {
     next: {
       ...defaultFetchOptions.next,
       tags: ["wordpress", `achievement-${slug}`],
@@ -245,7 +245,7 @@ export async function getPostTypeById(
   id: number
 ): Promise<Post> {
   const url = getUrl(`/wp-json/wp/v2/${postType}/${id}`);
-  const response = await wordpressFetch<Post[]>(url, {
+  const response = await wordpressFetch<Post>(url, {
     next: {
       ...defaultFetchOptions.next,
       tags: ["wordpress", `${postType}-${id}`],
@@ -329,7 +329,7 @@ export async function getProductById(id: number): Promise<Post> {
 
 export async function getProductBySlug(slug: string): Promise<Post> {
   const url = getUrl(`/wp-json/wp/v2/produits?slug=${slug}`);
-  const response = await wordpressFetch<Post>(url, {
+  const response = await wordpressFetch<Post[]>(url, {
     next: {
       ...defaultFetchOptions.next,
       tags: ["wordpress", `product-${slug}`],
@@ -353,7 +353,9 @@ export async function getProductCategoryBySlug(
   return response[0];
 }
 
-export async function getCategoriesOfCategoryId(id: number): Promise<Category> {
+export async function getCategoriesOfCategoryId(
+  id: number
+): Promise<Category[]> {
   const url = getUrl(`/wp-json/wp/v2/categorie?parent=${id}`);
   const response = await wordpressFetch<Category[]>(url, {
     next: {

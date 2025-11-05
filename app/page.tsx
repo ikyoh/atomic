@@ -73,7 +73,7 @@ export default async function Page({
 
   if (!page) return <NotFound />;
 
-  const blocks = parse(page.content.raw);
+  const blocks = parse(page.content.raw || "");
   return (
     <>
       {page.acf.carrousel &&

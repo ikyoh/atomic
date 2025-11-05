@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 
 
-const SubNavigation = ({ items }) => {
+const SubNavigation = ({ items }: { items: Array<{ icon: string; ancre: string; intitule: string }> }) => {
 
 
     const [isActive, setIsActive] = useState(false)
@@ -35,9 +35,9 @@ const SubNavigation = ({ items }) => {
 }
 
 
-const AnchorLink = ({ anchor, title, icon, setIsActive }) => {
+const AnchorLink = ({ anchor, title, icon, setIsActive }: { anchor: string; title: string; icon: string; setIsActive: (value: boolean) => void; }) => {
 
-    const [activeId, setActiveId] = useState(null);
+    const [activeId, setActiveId] = useState<string | null>(null);
 
 
     useEffect(() => {

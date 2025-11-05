@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  transpilePackages: ["three"],
   async redirects() {
     return [
       {

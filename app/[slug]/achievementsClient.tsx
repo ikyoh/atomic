@@ -10,21 +10,19 @@ const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_URL;
 
 export default function AchievementsClient() {
 
-
-
     const searchParams = useSearchParams()
     const search = searchParams.toString()
     const secteur = searchParams.get('secteur')
     console.log('search', search)
 
-    const fetchPosts = async ({ pageParam }) => {
+    const fetchPosts = async ({ pageParam }: { pageParam: string }) => {
         const res = await fetch(pageParam + "&" + search)
         const headerLink = res.headers.get('link');
         const json = await res.json();
         return { posts: json, headerLink };
     }
 
-    function parseLinkHeader(header) {
+    function parseLinkHeader(header: string) {
         const regex = /<([^>]+)>(?:;\s*rel="([^"]+)")?/g;
         const results = [];
         let match;
@@ -47,8 +45,9 @@ export default function AchievementsClient() {
     } = useInfiniteQuery({
         queryKey: ['achivements', search],
         queryFn: fetchPosts,
-        initialPageParam: `${baseUrl}/wp-json/wp/v2/realisations?per_page=3&page=1`,
+        initialPageParam: `${baseUrl}/wp-json/wp/v2/realisations?per_page=9&page=1`,
         getNextPageParam: ({ headerLink }) => {
+            if (!headerLink) return undefined;
             const links = parseLinkHeader(headerLink);
             if (links[links.length - 1].rel !== "next") return undefined
             if (links[links.length - 1].rel === "next") return links[links.length - 1].url
@@ -68,9 +67,9 @@ export default function AchievementsClient() {
                     )
                     :
 
-                    data.pages?.map((group, i) => (
+                    data?.pages?.map((group, i) => (
                         <React.Fragment key={i}>
-                            {group.posts?.map((post) => (
+                            {group.posts?.map((post: any) => (
                                 <AchievementCard key={post.id} post={post} />
                             ))}
                         </React.Fragment>

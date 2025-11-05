@@ -36,7 +36,7 @@ export async function ProductCard({ id }: { id: number }) {
     >
       <div className="flex flex-col gap-4">
         <div className="h-48 w-full relative rounded-none flex items-center justify-center">
-          {media.source_url ? (
+          {media?.source_url ? (
             <Image
               className="h-full! w-full! object-cover rounded-none!"
               src={media.source_url

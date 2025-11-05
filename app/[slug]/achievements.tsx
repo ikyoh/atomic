@@ -8,18 +8,8 @@ import AchievementsClient from "./achievementsClient";
 export const dynamic = "auto";
 export const revalidate = 600;
 
-export default async function Achievements({
-    searchParams,
-}: {
-    searchParams: Promise<{
-        author?: string;
-        tag?: string;
-        category?: string;
-        page?: string;
-        search?: string;
-    }>;
-}) {
-    const params = await searchParams;
+export default async function Achievements() {
+    //const params = await searchParams;
     //const { author, tag, category, page: pageParam, search } = params;
 
     // Fetch data based on search parameters

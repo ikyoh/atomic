@@ -16,6 +16,7 @@ interface WPEntity {
 interface RenderedContent {
   rendered: string;
   protected: boolean;
+  raw?: string | undefined;
 }
 
 interface RenderedTitle {
@@ -76,6 +77,8 @@ export interface Post extends WPEntity {
   categories: number[];
   tags: number[];
   meta: Record<string, unknown>;
+  acf: any;
+  critere: any;
 }
 
 export interface Page extends WPEntity {
@@ -90,6 +93,8 @@ export interface Page extends WPEntity {
   ping_status: "open" | "closed";
   template: string;
   meta: Record<string, unknown>;
+  acf: any;
+  raw: any;
 }
 
 // Taxonomy types
@@ -106,6 +111,7 @@ interface Taxonomy {
 export interface Category extends Taxonomy {
   taxonomy: "category";
   parent: number;
+  acf: any;
 }
 
 export interface Tag extends Taxonomy {

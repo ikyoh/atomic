@@ -20,13 +20,13 @@ const indicatorVariants = cva(
     }
 )
 
-const NavIndicator = ({ options, variant }: { options: any, variant: any }) => {
+const NavIndicator = ({ options, variant }: { options: any, variant?: any }) => {
 
     const [indicatorPosition, setIndicatorPosition] = useState(-500);
     const [indicatorWidth, setIndicatorWidth] = useState();
 
     useEffect(() => {
-        const handleClick = (event) => {
+        const handleClick = (event: any) => {
             const button = event.target.closest('.navListener');
             if (button) {
                 const rect = button.getBoundingClientRect();

@@ -113,9 +113,9 @@ export default function Contact() {
                                     <SelectContent>
                                         <SelectGroup {...field}>
                                             <SelectLabel>Faites votre choix</SelectLabel>
-                                            <SelectItem value="enseigne">J&apos;ai besoin d'une enseigne</SelectItem>
+                                            <SelectItem value="enseigne">J&apos;ai besoin d&apos;une enseigne</SelectItem>
                                             <SelectItem value="signalétique">J&apos;ai besoin de signalétique</SelectItem>
-                                            <SelectItem value="contact">J&apos;aimerais être recontacter</SelectItem>
+                                            <SelectItem value="contact">J&apos;aimerais être recontacté</SelectItem>
                                             <SelectItem value="rdv">Je souhaite prendre un rendez-vous</SelectItem>
                                             <SelectItem value="other">Je ne sais pas trop</SelectItem>
                                         </SelectGroup>
@@ -177,7 +177,7 @@ export default function Contact() {
                     </p>
                     {mailStatus === "mail_error" &&
                         <p className="text-primary">
-                            Votre message n'a pas été expédié - Il y a eu un problème - Veuillez essayer plus tard
+                            Votre message n&apos;a pas été expédié - Il y a eu un problème - Veuillez essayer plus tard
                         </p>
                     }
                     <Button type="submit" disabled={mailStatus === "mail_sending" || mailStatus === "mail_sent"}>

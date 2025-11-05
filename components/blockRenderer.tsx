@@ -42,7 +42,7 @@ const ImageBlock = ({ innerHTML }: { innerHTML: string }) => (
 );
 
 const HeadingBlock = ({ innerHTML }: { innerHTML: string }) => {
-    const match = innerHTML.match(/<(h[1-6])([^>]*)>(.*?)<\/h[1-6]>/is);
+    const match = innerHTML.match(/<(h[1-6])([^>]*)>(.*?)<\/h[1-6]>/);
     if (!match) {
         // fallback if not found
         return <div dangerouslySetInnerHTML={{ __html: innerHTML }} />;
@@ -57,7 +57,7 @@ const HeadingBlock = ({ innerHTML }: { innerHTML: string }) => {
     return React.createElement(Tag, { className, dangerouslySetInnerHTML: { __html: content } });
 };
 
-const EmbedBlock = ({ attrs }: { attrs: GutenbergBlock["attrs"] }) => {
+const EmbedBlock = ({ attrs, innerHTML }: { attrs: GutenbergBlock["attrs"], innerHTML: string }) => {
 
     if (attrs && attrs.type === 'video' && attrs.providerNameSlug === "youtube")
         return <div className="relative overflow-hidden aspect-video mb-5">
@@ -66,7 +66,7 @@ const EmbedBlock = ({ attrs }: { attrs: GutenbergBlock["attrs"] }) => {
     return <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
 };
 
-const GroupBlock = ({ innerHTML, innerBlocks, attrs, innerContent }: { innerHTML: string; innerBlocks: GutenbergBlock[], attrs: GutenbergBlock["attrs"] }) => {
+const GroupBlock = ({ innerHTML, innerBlocks, attrs, innerContent }: { innerHTML: string; innerBlocks: GutenbergBlock[], attrs: GutenbergBlock["attrs"], innerContent: string }) => {
 
     const className = innerHTML.match(/class="([^"]*)"/)?.[1] || '';
     const id = innerHTML.match(/id="([^"]*)"/)?.[1] || '';
@@ -89,7 +89,7 @@ const GroupBlock = ({ innerHTML, innerBlocks, attrs, innerContent }: { innerHTML
     )
 }
 
-const LogosBlock = ({ attrs }: { attrs: object }) => {
+const LogosBlock = ({ attrs }: { attrs: any }) => {
 
 
     if (!attrs.data.logos) return null
@@ -103,7 +103,7 @@ const LogosBlock = ({ attrs }: { attrs: object }) => {
                     reverse={attrs.data.is_reverse === "0" ? false : true}>
 
                     {
-                        attrs.data.logos?.map((logo: { id: number }, index: number) => (
+                        attrs.data.logos?.map((logo: number, index: number) => (
                             <div key={"logos_" + index} className="flex">
 
                                 <div className="flex items-center space-x-4">
@@ -133,7 +133,7 @@ const LogosBlock = ({ attrs }: { attrs: object }) => {
 
 };
 
-const CarouselBlock = ({ attrs }: { attrs: object }) => {
+const CarouselBlock = ({ attrs }: { attrs: any }) => {
 
     return (
 
@@ -165,7 +165,7 @@ const CarouselBlock = ({ attrs }: { attrs: object }) => {
 
 };
 
-const GridCardsBlock = ({ attrs }: { attrs: object }) => {
+const GridCardsBlock = ({ attrs }: { attrs: any }) => {
 
     return (
 
@@ -196,7 +196,7 @@ const GridCardsBlock = ({ attrs }: { attrs: object }) => {
 
 };
 
-const AccordionCardsBlock = ({ attrs }: { attrs: object }) => {
+const AccordionCardsBlock = ({ attrs }: { attrs: any }) => {
 
     return (
 
@@ -244,7 +244,7 @@ const AccordionCardsBlock = ({ attrs }: { attrs: object }) => {
 
 };
 
-const AccordionPictureBlock = ({ attrs }: { attrs: object }) => {
+const AccordionPictureBlock = ({ attrs }: { attrs: any }) => {
 
     return (
         <div className='flex items-center justify-center'>
@@ -294,7 +294,7 @@ const AccordionPictureBlock = ({ attrs }: { attrs: object }) => {
 
 };
 
-const TimelineBlock = ({ attrs }: { attrs: object }) => {
+const TimelineBlock = ({ attrs }: { attrs: any }) => {
 
     return (
         <ScrollArea className="w-full mb-3">
@@ -368,9 +368,9 @@ const UnderTakingBlock = ({ attrs }: { attrs: any }) => {
 
 };
 
-const CTABlock = ({ attrs }: { attrs: object }) => {
+const CTABlock = ({ attrs }: { attrs: any }) => {
 
-    console.log('attrs', attrs)
+
     return (
         <CallToAction
             title={attrs.data.title}
@@ -407,14 +407,13 @@ const blockMap: {
     // null: NullBlock
 };
 
-const BlockRenderer: React.FC<{ blocks: GutenbergBlock[] }> = ({ blocks }) => {
+const BlockRenderer = ({ blocks }: { blocks: GutenbergBlock[] | any }) => {
 
     if (!blocks?.length) return null;
 
-    console.log('blocks', blocks)
     return (
         <>
-            {blocks.map((block, index) => {
+            {blocks.map((block: GutenbergBlock, index: number) => {
 
                 const BlockComponent = blockMap[block.blockName ?? 'null'];
 

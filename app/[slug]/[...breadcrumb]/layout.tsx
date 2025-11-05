@@ -5,7 +5,7 @@ import React from "react";
 
 interface BlogLayoutProps {
     children: React.ReactNode;
-    params: { breadcrumb: string[]; slug: string };
+    params: Promise<{ breadcrumb: string[]; slug: string }>;
 }
 
 export default async function BlogLayout({ children, params }: BlogLayoutProps) {
@@ -13,10 +13,13 @@ export default async function BlogLayout({ children, params }: BlogLayoutProps) 
     const categories = await getProductsCategories()
 
     const productsByCategoryies = await Promise.all(
-        categories.map(async (category) => ({
-            categoryId: category.id,
-            products: await getProductsOfCategoryById(category.id),
-        }))
+        categories.map(async (category) => {
+            const products = await getProductsOfCategoryById(category.id);
+            return {
+                categoryId: category.id,
+                products: Array.isArray(products) ? products : [products],
+            };
+        })
     );
 
     const { breadcrumb, slug } = await params;
@@ -31,7 +34,6 @@ export default async function BlogLayout({ children, params }: BlogLayoutProps) 
                     />
                     <ProductsMobileMenu
                         categories={categories}
-                        productsByCategoryies={productsByCategoryies}
                     />
                 </>
             }

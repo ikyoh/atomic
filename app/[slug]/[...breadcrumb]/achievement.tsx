@@ -25,7 +25,7 @@ export default async function Achievement({ slug }: { slug: string }) {
 
     return (
         <>
-            <Hero featuredURL={featuredMedia.source_url} />
+            <Hero featuredURL={featuredMedia ? featuredMedia.source_url : undefined} />
             <Container id="content" className="px-5 md:px-0">
                 <div className="flex items-center my-6">
                     <h1>{post.title.rendered}</h1>
@@ -36,7 +36,7 @@ export default async function Achievement({ slug }: { slug: string }) {
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
 
-                    {post.acf.galerie && post.acf.galerie?.map((item, index) =>
+                    {post.acf.galerie && post.acf.galerie?.map((item: string, index: number) =>
 
                         <Dialog key={'galerie' + index}>
 
@@ -77,11 +77,11 @@ export default async function Achievement({ slug }: { slug: string }) {
 
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
 
-                    {post.critere?.map(id =>
+                    {post.critere?.map((id: number) =>
                         <TagCard key={`tag${id}`} tagID={id} />
                     )}
                     {post.acf.produit?.map((product: any) => (
-                        <ProductCard key={product.ID} productID={product.ID} isTiny={true} />
+                        <ProductCard key={product.ID} productID={product.ID} isTiny={true} breadcrumb={[]} />
                     ))}
                 </div>
 

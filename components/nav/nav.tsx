@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { MobileNav } from "./mobile-nav";
 
 import { usePathname } from 'next/navigation';
-import ProductsBigMenu from "./nav-menu-demo";
+import ProductsBigMenu from "./nav-bigmenu";
 
 
 const Nav = ({ className, children, id }: NavProps) => {

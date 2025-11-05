@@ -252,23 +252,23 @@ function CarouselNext({
   )
 }
 
-const useDotButton = (emblaApi) => {
+const useDotButton = (emblaApi: any) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState([])
 
   const onDotButtonClick = useCallback(
-    (index) => {
+    (index: number) => {
       if (!emblaApi) return
       emblaApi.scrollTo(index)
     },
     [emblaApi]
   )
 
-  const onInit = useCallback((emblaApi) => {
+  const onInit = useCallback((emblaApi: any) => {
     setScrollSnaps(emblaApi.scrollSnapList())
   }, [])
 
-  const onSelect = useCallback((emblaApi) => {
+  const onSelect = useCallback((emblaApi: any) => {
     setSelectedIndex(emblaApi.selectedScrollSnap())
   }, [])
 
@@ -287,7 +287,7 @@ const useDotButton = (emblaApi) => {
   }
 }
 
-const DotButton = (props) => {
+const DotButton = (props: any) => {
   const { children, ...restProps } = props
 
   return (

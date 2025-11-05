@@ -2,16 +2,20 @@
 import { getMediaById } from '@/lib/wordpress';
 import { useEffect, useState } from "react";
 
+interface MediaObject {
+    source_url: string;
+    alt_text?: string;
+}
 
 const Picture = ({ id, className }: { id: number, className?: string }) => {
-    console.log('id', id)
-    const [media, setMedia] = useState(null)
+
+    const [media, setMedia] = useState<MediaObject | null>(null)
 
     useEffect(() => {
         async function fetchPicture() {
             const media = await getMediaById(id);
             if (!media) return;
-            setMedia(media)
+            setMedia(media as any)
         }
         fetchPicture()
     }, [])

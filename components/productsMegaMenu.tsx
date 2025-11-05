@@ -10,7 +10,26 @@ import Link from "next/link"
 import { ProductCard, ProductLink } from "./ProductCard"
 import { ProductCategoryCard } from "./ProductCategoryCard"
 
-export default function ProductsMegaMenu({ categories, productsByCategoryies }: { categories: object[], productsByCategoryies: object[] }) {
+interface Category {
+    id: number;
+    name: string;
+    slug: string;
+    parent: number;
+    acf: {
+        order?: number;
+    };
+}
+
+interface Product {
+    id: number;
+}
+
+interface ProductsByCategory {
+    categoryId: number;
+    products: Product[];
+}
+
+export default function ProductsMegaMenu({ categories, productsByCategoryies }: { categories: Category[], productsByCategoryies: ProductsByCategory[] }) {
 
     return (
         <div className="hidden md:block fixed w-screen z-20 left-0 top-[90px] bg-primary">
