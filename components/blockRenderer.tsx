@@ -19,6 +19,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from '@/lib/utils';
 import { getMediaById } from '@/lib/wordpress';
 import parse from 'html-react-parser';
+import Image from 'next/image';
 import React from 'react';
 import CallToAction from './CallToAction';
 import { Flex } from './ui/flex';
@@ -449,6 +450,6 @@ const Picture = async ({ id, className }: { id: number, className?: string }) =>
     const media = await getMediaById(id);
     if (!media) return null;
     return (
-        <img src={media.source_url} alt={media.alt_text || 'Image'} className={className} />
+        <Image src={media.source_url} alt={media.alt_text || 'Image'} width={media.media_details.width} height={media.media_details.height} className={className} />
     )
 }

@@ -1,5 +1,6 @@
 'use client'
 import { getMediaById } from '@/lib/wordpress';
+import Image from 'next/image';
 import { useEffect, useState } from "react";
 
 interface MediaObject {
@@ -23,7 +24,7 @@ const Picture = ({ id, className }: { id: number, className?: string }) => {
 
     if (!media) return null;
     return (
-        <img src={media.source_url} alt={media.alt_text || 'Image'} className={className} />
+        <Image src={media.source_url} alt={media.alt_text || 'Image'} width={500} height={500} className={className} />
     )
 }
 
