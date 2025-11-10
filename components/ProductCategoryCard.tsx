@@ -14,8 +14,9 @@ export function ProductCategoryCard({ category, breadcrumb = [], className, ...p
                 <Image
                     src={category.acf.thumbnail ? category.acf.thumbnail : '/not-found.png'}
                     alt={category.name}
-                    width={300}
-                    height={300}
+                    width={232}
+                    height={186}
+                    quality={85}
                     className="object-cover aspect-[calc(300/240)] transition-all group-hover:scale-110 m-0! rounded-none! bg-light"
                 />
                 <div className="absolute bottom-0 w-full bg-primary p-2 transition-colors duration-200 text-center text-sm text-white h-[47px] flex items-center justify-center">

@@ -92,8 +92,8 @@ export default async function Page({
       {/* <ProductsMegaMenu categories={categories} /> */}
       {page.acf.carrousel ?
         <HeroCarousel images={page.acf.carrousel} title={page.title.rendered} subtitle={page.acf.subtitle} />
-        :
-        <Hero featuredURL={featuredMedia && typeof featuredMedia !== 'string' ? featuredMedia.source_url : ''} title={page.title.rendered} subtitle={page.acf.subtitle} />
+        : featuredMedia ?
+          <Hero featuredURL={featuredMedia && typeof featuredMedia !== 'string' ? featuredMedia.source_url : ''} title={page.title.rendered} subtitle={page.acf.subtitle} /> : null
       }
       <div id="content">
 
@@ -118,7 +118,6 @@ export default async function Page({
           <BlockRenderer blocks={blocks} />
 
           {page.template && page.template === "page-contact" && (<Contact />)}
-
 
         </Container >
       </div >

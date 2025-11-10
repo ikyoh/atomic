@@ -42,7 +42,7 @@ const defaultFetchOptions: FetchOptions = {
   next: {
     tags: ["wordpress"],
     revalidate: 0,
-    //revalidate: 3600, // Revalidate every hour by default
+    //revalidate: 36000, // Revalidate every 10 hours by default
   },
   headers: {
     Accept: "application/json",
