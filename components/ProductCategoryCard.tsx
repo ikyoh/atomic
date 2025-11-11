@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 
 export function ProductCategoryCard({ category, breadcrumb = [], className, ...props }: { category: any, breadcrumb?: string[], className?: string }) {
@@ -11,10 +12,13 @@ export function ProductCategoryCard({ category, breadcrumb = [], className, ...p
     return (
         <Link href={slug} className={cn("p-3", className)}>
             <div className="overflow-clip aspect-square relative group shadow-lg shadow-neutral-400 dark:shadow-neutral-800 hover:shadow-primary dark:hover:shadow-primary transition-shadow duration-200 group rounded-md">
-                <img
+                <Image
                     src={category.acf?.thumbnail || '/not-found.png'}
                     alt={category.name || 'Category'}
+                    width={300}
+                    height={300}
                     className="object-cover aspect-[calc(300/240)] transition-all group-hover:scale-110 m-0! rounded-none! bg-light"
+                    unoptimized
                 />
                 <div className="absolute bottom-0 w-full bg-primary p-2 transition-colors duration-200 text-center text-sm text-white h-[47px] flex items-center justify-center">
                     {category.name}
