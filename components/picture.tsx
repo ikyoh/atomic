@@ -19,7 +19,7 @@ const Picture = ({ id, className }: { id: number, className?: string }) => {
             setMedia(media as any)
         }
         fetchPicture()
-    }, [])
+    }, [id])
 
 
     if (!media) return null;
