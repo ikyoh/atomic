@@ -18,7 +18,7 @@ export function ProductCategoryCard({ category, breadcrumb = [], className, ...p
                     fill={true}
                     quality={85}
                     className="object-cover aspect-[calc(300/240)] transition-all group-hover:scale-110 m-0! rounded-none! bg-light"
-                    unoptimized={!category.acf?.thumbnail}
+                    unoptimized
                 />
                 <div className="absolute bottom-0 w-full bg-primary p-2 transition-colors duration-200 text-center text-sm text-white h-[47px] flex items-center justify-center">
                     {category.name}
