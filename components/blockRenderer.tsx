@@ -150,7 +150,11 @@ const CarouselBlock = ({ attrs }: { attrs: any }) => {
                     <CarouselItem key={"carousel_" + index} className="md:basis-1/2 pt-0">
                         <div className="p-5 rounded-2xl bg-light h-full">
 
-                            <Picture id={attrs.data[`cards_${index}_image`]} className="aspect-3/2 rounded-none! mt-0!" />
+                            <Picture
+                                id={attrs.data[`cards_${index}_image`]} className="aspect-3/2 rounded-none! mt-0!"
+                                width={304}
+                                height={202}
+                            />
 
                             <span className="font-medium">{attrs.data[`cards_${index}_text`]
                             }</span>
@@ -446,10 +450,15 @@ const BlockRenderer = ({ blocks }: { blocks: GutenbergBlock[] | any }) => {
 export default BlockRenderer;
 
 
-const Picture = async ({ id, className }: { id: number, className?: string }) => {
+const Picture = async ({ id, className, width, height }: { id: number, className?: string, width?: number, height?: number }) => {
     const media = await getMediaById(id);
     if (!media) return null;
     return (
-        <Image src={media.source_url} alt={media.alt_text || 'Image'} width={media.media_details.width} height={media.media_details.height} className={className} />
+        <Image
+            src={media.source_url}
+            alt={media.alt_text || 'Image'}
+            width={width || media.media_details.width}
+            height={height || media.media_details.height}
+            className={className} />
     )
 }
