@@ -33,7 +33,7 @@ export default function GoTop(props) {
     }
 
     return (
-        <Button variant="icon" size="icon" className={cn("fixed right-4 md:right-10 bottom-20",
+        <Button variant="icon" size="icon" className={cn("fixed right-4 md:right-10 bottom-20 z-100",
             isVisible ? "opacity-100" : "opacity-0")} onClick={scrollToTop}>
             <Image
                 src="/icons/arrow.svg"
