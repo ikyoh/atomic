@@ -457,8 +457,9 @@ const Picture = async ({ id, className, width, height }: { id: number, className
         <Image
             src={media.source_url}
             alt={media.alt_text || 'Image'}
-            width={width || media.media_details.width}
-            height={height || media.media_details.height}
+            fill
+            // width={media.media_details.width}
+            // height={media.media_details.height}
             className={className} />
     )
 }
