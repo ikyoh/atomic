@@ -273,16 +273,16 @@
 
 @layer templates {
   .template-services > section {
-    @apply bg-light rounded-xl shadow-xl sm:p-8 mx-5 md:mx-auto;
+    @apply bg-light rounded-xl shadow-xl p-5 sm:p-8 mx-5 md:mx-auto;
   }
   .template-services > section > h2 {
-    @apply bg-light z-20;
+    @apply bg-light z-20 py-5;
   }
   .template-atomic > section {
-    @apply p-0 sm:p-8 space-y-10;
+    @apply p-5 sm:p-8 space-y-10;
   }
   .template-atomic > section > h2 {
-    @apply bg-background z-20;
+    @apply bg-background z-20 py-5;
   }
   .template-atomic > hr {
     @apply border-b border-1 border-primary max-w-120 mx-5 md:mx-auto;
