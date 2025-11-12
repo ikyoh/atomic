@@ -21,6 +21,8 @@ export function generateStaticParams() {
     { slug: "produits" },
     { slug: "realisations" },
     { slug: "contact" },
+    { slug: "contact" },
+    { slug: "mentions-legales" },
   ];
 }
 
