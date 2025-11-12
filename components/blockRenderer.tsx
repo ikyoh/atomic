@@ -108,7 +108,12 @@ const LogosBlock = ({ attrs }: { attrs: any }) => {
                             <div key={"logos_" + index} className="flex">
 
                                 <div className="flex items-center space-x-4">
-                                    <Picture id={logo} className="w-12 h-auto" />
+                                    <Picture
+                                        id={logo}
+                                        className="w-12 h-auto"
+                                        width={80}
+                                        height={80}
+                                    />
                                 </div>
                             </div>
                         ))
@@ -449,7 +454,6 @@ const BlockRenderer = ({ blocks }: { blocks: GutenbergBlock[] | any }) => {
 
 export default BlockRenderer;
 
-
 const Picture = async ({ id, className, width, height }: { id: number, className?: string, width?: number, height?: number }) => {
     const media = await getMediaById(id);
     if (!media) return null;
@@ -457,9 +461,11 @@ const Picture = async ({ id, className, width, height }: { id: number, className
         <Image
             src={media.source_url}
             alt={media.alt_text || 'Image'}
-            fill
-            // width={media.media_details.width}
-            // height={media.media_details.height}
-            className={className} />
+            width={width ? width : media.media_details.width}
+            height={height ? height : media.media_details.height}
+            className={className}
+            loading="lazy"
+            quality={80}
+        />
     )
 }
