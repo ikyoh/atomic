@@ -2,10 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    minimumCacheTTL: 2678400, // 31 days
     remotePatterns: [
       {
-        protocol: process.env.PROTOCOL as "http" | "https",
+        protocol: `${process.env.WORDPRESS_PROTOCOL}`,
         hostname: `${process.env.WORDPRESS_HOSTNAME}`,
         port: "",
         pathname: "/**",

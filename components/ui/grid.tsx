@@ -4,7 +4,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const gridVariants = cva(
-  "grid gap-6 grid-cols-2",
+  "grid gap-6 grid-cols-1",
   {
     variants: {
       variant: {

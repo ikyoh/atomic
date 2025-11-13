@@ -211,7 +211,7 @@
   }
 
   .alignfull {
-    @apply max-w-full [&>*]:mx-auto px-0;
+    @apply max-w-full [&>*]:mx-auto px-5 sm:px-0 pb-5;
   }
 
   .alignwide {
@@ -267,7 +267,6 @@
     text-align: right;
   }
 
-
 }
 
 
@@ -276,13 +275,13 @@
     @apply bg-light rounded-xl shadow-xl p-5 sm:p-8 mx-5 md:mx-auto;
   }
   .template-services > section > h2 {
-    @apply bg-light z-20 py-5;
+    @apply bg-light;
   }
   .template-atomic > section {
     @apply p-5 sm:p-8 space-y-10;
   }
   .template-atomic > section > h2 {
-    @apply bg-background z-20 py-5;
+    @apply bg-background;
   }
   .template-atomic > hr {
     @apply border-b border-1 border-primary max-w-120 mx-5 md:mx-auto;
