@@ -263,7 +263,7 @@ const AccordionPictureBlock = ({ attrs }: { attrs: any }) => {
                     <TabsList className="space-y-2 h-auto bg-background">
                         {Array.from({ length: attrs.data.blocks }).map((_, index) => (
                             <AccordionItem value={"item-" + index} key={"AccordionPictureBlockItem" + index} className="bg-primary data-[state=open]:bg-white data-[state=open]:border data-[state=open]:border-primary rounded-sm">
-                                <AccordionTrigger className="font-bold not-data-[state=open]:text-white data-[state=open]:text-primary" asChild>
+                                <AccordionTrigger className="font-bold not-data-[state=open]:text-white dark:not-data-[state=open]:text-white data-[state=open]:text-primary dark:data-[state=open]:text-primary" asChild>
                                     <TabsTrigger value={"item-" + index} className="h-full py-2 uppercase">
                                         {attrs.data[`blocks_${index}_title`]}
                                     </TabsTrigger>
@@ -281,13 +281,7 @@ const AccordionPictureBlock = ({ attrs }: { attrs: any }) => {
                         }
 
                     </TabsList>
-                    <div className="bg-black rounded-3xl p-5 flex-none w-full md:w-[380px] h-[600px] relative">
-                        <div className='absolute top-5 left-1/2 -translate-x-1/2 rounded-b-3xl border-b border-white/50 w-40 h-7 bg-black'>
-                            <div className='rounded-full bg-blue-500/20 border border-white/20 h-3 w-3 absolute top-2 left-1/2 -translate-x-1/2'></div>
-                        </div>
-                        <div className="absolute bg-black -left-1 top-15 rounded-3xl w-3 h-15"></div>
-                        <div className="absolute bg-black -left-1 top-35 rounded-3xl w-3 h-15"></div>
-                        <div className="absolute bg-black -right-1 top-15 rounded-3xl w-3 h-25"></div>
+                    <div className="bg-black rounded-3xl p-5 flex-none w-full h-[280px] md:w-[380px] md:h-[600px] relative">
                         {Array.from({ length: attrs.data.blocks }).map((_, index) => (
                             <TabsContent key={"tabcontent-" + index} value={"item-" + index} className="h-full w-full">
                                 <Picture
