@@ -13,6 +13,21 @@ import Achievements from "./achievements";
 import Contact from "./contact";
 import Products from "./products";
 
+
+
+export function generateStaticParams() {
+  return [
+    { slug: "" },
+    { slug: "qui-sommes-nous" },
+    { slug: "services" },
+    { slug: "produits" },
+    { slug: "realisations" },
+    { slug: "contact" },
+    { slug: "contact" },
+    { slug: "mentions-legales" },
+  ];
+}
+
 export async function generateMetadata({
   params,
 }: {
