@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    contentDispositionType: "attachment",
     remotePatterns: [
       {
         protocol: `${process.env.WORDPRESS_PROTOCOL}` as "http" | "https",

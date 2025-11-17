@@ -38,8 +38,8 @@ const ParagraphBlock = ({ innerHTML }: { innerHTML: string }) => (
     <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
 );
 
-const ImageBlock = ({ innerHTML }: { innerHTML: string }) => (
-    <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
+const ImageBlock = ({ innerHTML, attrs }: { innerHTML: string, attrs: GutenbergBlock["attrs"] }) => (
+    <Picture id={attrs.id} />
 );
 
 const HeadingBlock = ({ innerHTML }: { innerHTML: string }) => {
@@ -450,6 +450,7 @@ export default BlockRenderer;
 
 const Picture = async ({ id, className, width, height }: { id: number, className?: string, width?: number, height?: number }) => {
     const media = await getMediaById(id);
+    console.log("Media fetched for id", id, media);
     if (!media) return null;
     return (
         <Image
@@ -458,8 +459,7 @@ const Picture = async ({ id, className, width, height }: { id: number, className
             width={media.media_details.width}
             height={media.media_details.height}
             className={className}
-            loading="lazy"
-            quality={80}
+            unoptimized={media.mime_type === "image/svg+xml" ? true : false}
         />
     )
 }

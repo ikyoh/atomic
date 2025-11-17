@@ -7,11 +7,27 @@ import { parse } from "@wordpress/block-serialization-default-parser";
 import { Metadata } from "next";
 import NotFound from "./not-found";
 
+
+export function generateStaticParams() {
+  return [
+    { slug: "" },
+    { slug: "qui-sommes-nous" },
+    { slug: "services" },
+    { slug: "produits" },
+    { slug: "realisations" },
+    { slug: "contact" },
+    { slug: "contact" },
+    { slug: "mentions-legales" },
+  ];
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+
+
 
   const page = await getPageBySlug("accueil");
 
