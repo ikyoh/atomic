@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { MobileNav } from "./mobile-nav";
 
 import { usePathname } from 'next/navigation';
-import ProductsBigMenu from "./nav-bigmenu";
+
 
 
 const Nav = ({ className, children, id }: NavProps) => {
@@ -52,7 +52,7 @@ const Nav = ({ className, children, id }: NavProps) => {
                             </Button>
                         ))}
                     </div> */}
-                    <ProductsBigMenu />
+
                     <Button asChild variant={"secondary"} className="hidden sm:flex">
                         <Link href="/contact" className="uppercase">Contact</Link>
                     </Button>
