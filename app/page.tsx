@@ -22,7 +22,6 @@ export async function generateMetadata({
     return {};
   }
 
-  console.log('page', page)
 
   const ogUrl = new URL(`${siteConfig.site_domain}/api/og`);
   ogUrl.searchParams.append("title", page.title.rendered);
@@ -71,7 +70,6 @@ export default async function Page({
 
   const featuredMedia = page.featured_media === 0 ? false : await getFeaturedMediaById(page.featured_media);
 
-  console.log('page', page)
 
   if (!page) return <NotFound />;
 
@@ -82,7 +80,7 @@ export default async function Page({
         <HeroCarousel isFullscreen images={page.acf.carrousel} youtubeID={page.acf.youtube_id} />
       }
 
-      <Container>
+      <Container id="content" className="scroll-mt-22">
         <h1 className="text-center font-black! uppercase">{page.title.rendered}</h1>
         {/* <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} /> */}
         <BlockRenderer blocks={blocks} />

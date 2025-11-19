@@ -187,7 +187,7 @@ const GridCardsBlock = ({ attrs }: { attrs: any }) => {
                         }`}>
                         <Picture
                             id={attrs.data[`blocks_${index}_image`]}
-                            className={`hover:scale-125 transition-transform cover rounded-none! w-full! md:h-full! h-[280px]! mt-0! ${index % 2 === 1 && 'order-last'
+                            className={`hover:scale-125 transition-transform object-cover rounded-none! w-full! md:h-full! h-[280px]! mt-0! ${index % 2 === 1 && 'order-last'
                                 }`}
                         />
                     </div>

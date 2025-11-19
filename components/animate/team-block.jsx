@@ -19,12 +19,12 @@ const TeamBlock = ({ children }) => {
                     onEnter: self => {
                         self.trigger.setAttribute('data-active', '')
                     },
-                    onLeave: self => {
-                        self.trigger.removeAttribute('data-active')
-                    },
-                    onEnterBack: self => {
-                        self.trigger.setAttribute('data-active', '')
-                    },
+                    // onLeave: self => {
+                    //     self.trigger.removeAttribute('data-active')
+                    // },
+                    // onEnterBack: self => {
+                    //     self.trigger.setAttribute('data-active', '')
+                    // },
                     onLeaveBack: self => {
                         self.trigger.removeAttribute('data-active')
                     },

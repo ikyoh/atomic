@@ -272,13 +272,13 @@
 
 @layer templates {
   .template-services > section {
-    @apply bg-light rounded-xl shadow-xl p-5 sm:p-8 mx-5 md:mx-auto;
+    @apply bg-light rounded-xl shadow-xl p-5 sm:p-8 mx-5 md:mx-auto scroll-mt-26;
   }
   .template-services > section > h2 {
     @apply bg-light;
   }
   .template-atomic > section {
-    @apply p-5 sm:p-8 space-y-10;
+    @apply p-5 sm:p-8 space-y-10 scroll-mt-26;
   }
   .template-atomic > section > h2 {
     @apply bg-background;

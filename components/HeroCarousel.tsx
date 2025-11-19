@@ -7,6 +7,8 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroCarousel({ images, title, subtitle, isFullscreen = false, youtubeID }: { images: string[], title?: string, subtitle?: string, isFullscreen?: boolean, youtubeID?: string }) {
     return (
@@ -17,7 +19,7 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
             }}
             isHero
         >
-            <CarouselContent className={cn(isFullscreen ? "h-[calc(100vh-90px)]" : "h-[485px]")}>
+            <CarouselContent className={cn("h-[calc(100vh-155px)] md:h-[900px]")}>
                 {youtubeID &&
                     <CarouselItem className="h-full w-full overflow-clip">
                         <iframe
@@ -52,6 +54,9 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
                     </div>
                 }
             </div>
+            <Link href={"#content"} className="md:hidden animate-bounce flex items-center justify-center text-white size-12 bg-neutral-500/50 rounded-full absolute bottom-25 -translate-x-1/2 left-1/2">
+                <ChevronDown />
+            </Link>
             <CarouselPrevious className="ml-10 md:ml-60 scale-200 text-white" />
             <CarouselNext className="mr-10 md:mr-60 scale-200 text-white" />
         </Carousel >

@@ -14,7 +14,7 @@ const SubNavigation = ({ items }: { items: Array<{ icon: string; ancre: string; 
 
     return (
         <nav className={cn("flex fixed top-35 z-30 min-w-70 transition-all", isActive ? "translate-x-0 right-0" : "translate-x-full right-0 md:right-12")}>
-            <div className={cn("bg-tertiary flex-none w-7 h-14 rounded-l-full absolute -left-6 -z-10 top-2/4 -translate-y-1/2 cursor-pointer flex items-center")} onClick={() => setIsActive(!isActive)}>
+            <div className={cn("bg-tertiary flex-none w-7 h-14 rounded-l-full absolute -left-6 -z-10 top-9 cursor-pointer flex items-center")} onClick={() => setIsActive(!isActive)}>
                 <Image
                     alt="icon"
                     src={"/icons/arrow.svg"}

@@ -5,9 +5,6 @@ import ProductsMobileMenu from "@/components/productsMobileMenu";
 import { getProductsCategories, getProductsOfCategoryById } from "@/lib/wordpress";
 
 
-export const dynamic = "auto";
-export const revalidate = 600;
-
 export default async function Products() {
 
     const categories = await getProductsCategories()
@@ -19,6 +16,7 @@ export default async function Products() {
         }))
     );
 
+    console.log('productsByCategoryies', productsByCategoryies)
 
     return (
         <Section>

@@ -88,8 +88,8 @@ const styles = {
     base: [
       "font-sans antialiased",
       // Headings (without spacing)
-      "[&_h1]:text-5xl [&_h1]:font-black [&_h1]:uppercase [&_h1]:tracking-tight",
-      "[&_h2]:sticky [&_h2]:z-20 md:[&_h2]:static [&_h2]:top-[90px] [&_h2]:text-[24px] md:[&_h2]:text-5xl [&_h2]:font-black [&_h2]:uppercase [&_h2]:tracking-tight [&_h2]:py-5! sm:[&_h2]:py-10!",
+      "[&_h1]:text-3xl md:[&_h1]:text-4xl [&_h1]:font-black [&_h1]:uppercase [&_h1]:tracking-tight",
+      "[&_h2]:sticky [&_h2]:z-20 md:[&_h2]:static [&_h2]:top-[90px] [&_h2]:text-[24px] md:[&_h2]:text-3xl [&_h2]:font-black [&_h2]:uppercase [&_h2]:tracking-tight [&_h2]:py-5! sm:[&_h2]:py-4!",
       "[&_h3]:text-xl [&_h3]:font-black [&_h3]:uppercase [&_h3]:tracking-tight",
       "[&_h4]:text-xl [&_h4]:font-black [&_h4]:uppercase [&_h4]:tracking-tight",
       "[&_h5]:text-lg [&_h5]:font-black [&_h5]:uppercase [&_h5]:tracking-tight",
@@ -104,7 +104,7 @@ const styles = {
     ],
     headerSpacing: [
       "[&_h1]:mt-8 [&_h1]:mb-4",
-      "[&_h2]:mt-8 [&_h2]:mb-8",
+      "[&_h2]:mt-5 [&_h2]:mb-5",
       "[&_h3]:mt-6 [&_h3]:mb-3",
       "[&_h4]:mt-6 [&_h4]:mb-3",
       "[&_h5]:mt-4 [&_h5]:mb-2",

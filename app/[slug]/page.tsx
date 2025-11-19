@@ -112,7 +112,7 @@ export default async function Page({
         : featuredMedia ?
           <Hero featuredURL={featuredMedia && typeof featuredMedia !== 'string' ? featuredMedia.source_url : ''} title={page.title.rendered} subtitle={page.acf.subtitle} /> : null
       }
-      <div id="content">
+      <div id="content" className="scroll-mt-16">
 
         <Container className={cn("relative",
           page.template === "page-services" ? 'template-services' : '',
