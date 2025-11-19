@@ -41,8 +41,8 @@ function getUrl(path: string, query?: Record<string, any>) {
 const defaultFetchOptions: FetchOptions = {
   next: {
     tags: ["wordpress"],
-    //revalidate: 0,
-    revalidate: 36000, // Revalidate every 10 hours by default
+    revalidate: 0,
+    //revalidate: 36000, // Revalidate every 10 hours by default
   },
   headers: {
     Accept: "application/json",
