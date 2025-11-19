@@ -5,7 +5,8 @@ type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-  site_name: "next-wp",
-  site_description: "Starter template for Headless WordPress with Next.js",
-  site_domain: "https://next-wp.com",
+  site_name: "Atomic",
+  site_description:
+    "Atomic Enseignes et Signalétique - Fabricant Français - Alpes maritimes (06) - Var (83)",
+  site_domain: "https://atomic.fr",
 };
