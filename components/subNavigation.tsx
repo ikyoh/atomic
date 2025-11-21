@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 
 const SubNavigation = ({ items }: { items: Array<{ icon: string; ancre: string; intitule: string }> }) => {
 
-
     const [isActive, setIsActive] = useState(false)
 
     return (

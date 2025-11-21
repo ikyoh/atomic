@@ -77,9 +77,9 @@ export default function AchievementsFilter({ secteurs, criteres }) {
 
 
     return (
-        <div className={cn("flex fixed -top-80 md:top-32 z-30 w-full md:w-auto md:min-w-70 transition-all", isActive ? "translate-y-full md:translate-x-0 md:translate-y-0 md:right-0" : "md:translate-x-full md:right-12")}>
+        <div className={cn("flex fixed -top-83 md:top-32 z-30 w-full md:w-auto md:min-w-70 transition-all", isActive ? "translate-y-full md:translate-x-0 md:translate-y-0 md:right-0" : "md:translate-x-full md:right-12")}>
             <div
-                className={cn("bg-tertiary flex-none w-7 h-14 -rotate-90 md:rotate-0 rounded-l-full absolute -bottom-9 left-1/2 md:-left-6 -z-10 md:top-1/2 -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 cursor-pointer flex items-center")}
+                className={cn("bg-tertiary flex-none w-7 h-14 -rotate-90 md:rotate-0 rounded-l-full absolute -bottom-9 left-1/2 md:-left-6 -z-10 top-9 -translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 cursor-pointer flex items-center")}
                 onClick={() => {
                     setIsActive(!isActive);
                 }}
@@ -93,8 +93,8 @@ export default function AchievementsFilter({ secteurs, criteres }) {
                 />
             </div>
             <div className="bg-light/50 p-0 pb-2 space-y-2 backdrop-blur-md overflow-hidden w-full rounded-bl-md rounded-br-md md:rounded-tl-md md:rounded-br-none">
-                <div className="bg-secondary p-2 flex justify-between gap-2">
-                    <div className="flex items-center bg-white rounded-full pl-3 flex-1">
+                <div className="p-2 pl-4 flex justify-between gap-2">
+                    <div className="flex items-center bg-white rounded-full pl-2 flex-1">
                         <span
                             onClick={() => {
                                 setIsActive(true),
@@ -122,7 +122,7 @@ export default function AchievementsFilter({ secteurs, criteres }) {
                         <ResetIcon />
                     </div>
                 </div>
-                <div className="px-2 space-y-2">
+                <div className="px-2 space-y-1">
                     {criteres?.map(critere => (
                         <Label
                             key={"critere" + critere.id}
@@ -164,20 +164,20 @@ export default function AchievementsFilter({ secteurs, criteres }) {
                         <SelectContent>
                             <SelectGroup>
                                 {/* <SelectLabel>Secteur</SelectLabel> */}
-                                <SelectItem value="all">
+                                <SelectItem value="all" className="py-0">
                                     <div className="flex items-center gap-2 truncate">
                                         <Image
                                             alt="Tous les secteurs"
-                                            src="/icons/arrow.svg"
-                                            height={14}
-                                            width={14}
-                                            className="h-4 w-4 m-0! dark:invert"
+                                            src="/icons/tous_secteurs.svg"
+                                            height={24}
+                                            width={24}
+                                            className="h-6 w-6 m-0! invert-0 dark:invert object-cover"
                                         />
                                         Tous les secteurs
                                     </div>
                                 </SelectItem>
                                 {secteurs.map((secteur) => (
-                                    <SelectItem key={'secteur' + secteur.id} value={secteur.id}>
+                                    <SelectItem key={'secteur' + secteur.id} value={secteur.id} className="py-0">
                                         <div className="flex items-center gap-2">
                                             <Image
                                                 alt={secteur.name}
@@ -194,7 +194,7 @@ export default function AchievementsFilter({ secteurs, criteres }) {
                         </SelectContent>
                     </Select>
                 </div>
-            </div>
+            </div >
         </div >
     );
 }

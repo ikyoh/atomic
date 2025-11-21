@@ -361,7 +361,7 @@ const UnderTakingBlock = ({ attrs }: { attrs: any }) => {
         <div className='bg-light rounded-md shadow-md p-5 flex items-start gap-5'>
             <Picture
                 id={attrs.data.icon}
-                className='h-20 w-20 bg-neutral-300 p-3 rounded-full! my-0!'
+                className='h-20 w-20 bg-neutral-300 p-3 rounded-full! my-0! object-cover'
             />
             <div>
                 <h3 className="text-xl font-bold">{attrs.data.title}</h3>
@@ -450,7 +450,7 @@ export default BlockRenderer;
 
 const Picture = async ({ id, className, width, height }: { id: number, className?: string, width?: number, height?: number }) => {
     const media = await getMediaById(id);
-    console.log("Media fetched for id", id, media);
+
     if (!media) return null;
     return (
         <Image

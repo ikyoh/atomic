@@ -8,9 +8,11 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HeroCarousel({ images, title, subtitle, isFullscreen = false, youtubeID }: { images: string[], title?: string, subtitle?: string, isFullscreen?: boolean, youtubeID?: string }) {
+    console.log('images', images)
     return (
         <Carousel
             opts={{
@@ -19,7 +21,7 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
             }}
             isHero
         >
-            <CarouselContent className={cn("h-[calc(100vh-155px)] md:h-[900px]")}>
+            <CarouselContent className={cn("h-[calc(100vh-155px)] md:h-[445px]")}>
                 {youtubeID &&
                     <CarouselItem className="h-full w-full overflow-clip">
                         <iframe
@@ -34,17 +36,20 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
                     </CarouselItem>
                 }
                 {images.map((image, index) => (
-                    <CarouselItem key={index} className="h-full w-full bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
-                        <div>
-
-                        </div>
+                    <CarouselItem key={index} className="h-full w-full relative">
+                        <Image
+                            src={image}
+                            alt={title || "Featured Image"}
+                            fill
+                            className="rounded-none! mt-0! object-cover"
+                        />
                     </CarouselItem>
                 ))}
             </CarouselContent>
 
-            <div className="absolute -translate-y-full -translate-x-1/2 left-1/2 pb-5">
+            <div className="z-2 absolute bottom-0 h-1/2 md:h-auto left-0 right-0 flex flex-col items-center justify-start pb-10">
                 {title &&
-                    <h1 className="relative px-5 text-[2.5rem] font-black! text-center text-white uppercase text-shadow-primary text-shadow-[0_5px_20px] mb-3">
+                    <h1 className="px-5 text-[2.5rem] font-black! text-center text-white uppercase text-shadow-primary text-shadow-[0_5px_20px] mb-3">
                         {title}
                     </h1>
                 }
@@ -54,6 +59,7 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
                     </div>
                 }
             </div>
+
             <Link href={"#content"} className="md:hidden animate-bounce flex items-center justify-center text-white size-12 bg-neutral-500/50 rounded-full absolute bottom-25 -translate-x-1/2 left-1/2">
                 <ChevronDown />
             </Link>
