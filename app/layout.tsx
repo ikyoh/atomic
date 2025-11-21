@@ -27,16 +27,6 @@ const font = FontSans({
   variable: "--font-sans",
 });
 
-export function generateStaticParams() {
-  return [
-    { slug: "qui-sommes-nous" },
-    { slug: "services" },
-    { slug: "produits" },
-    { slug: "realisations" },
-    { slug: "contact" },
-    { slug: "mentions-legales" },
-  ];
-}
 
 export const metadata: Metadata = {
   title: "WordPress & Next.js Starter by 9d8",
