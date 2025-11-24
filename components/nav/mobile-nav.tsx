@@ -8,7 +8,7 @@ export async function MobileNav() {
   const options = await getSiteOptions();
 
   return (
-    <div className="visible sm:hidden fixed z-50 bottom-0 bg-white h-[65px] border-t border-primary w-full px-4">
+    <div className="visible sm:hidden fixed z-50 bottom-0 bg-white dark:bg-black h-[65px] border-t border-primary w-full px-4">
       <div className="relative">
         <div className="max-w-sm h-full mx-auto flex items-center justify-between overflow-clip">
           {options['navigation']?.filter(f => f.is_mobile).map((item) => (

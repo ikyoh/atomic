@@ -38,21 +38,9 @@ const Nav = ({ className, children, id }: NavProps) => {
                     href="/"
                 >
                     <Logo />
-
-                    {/* <h2 className="text-sm">{siteConfig.site_name}</h2> */}
                 </Link>
                 {children}
                 <div className="flex items-center gap-2">
-                    {/* <div className="mx-2 hidden md:flex">
-                        {Object.entries(mainMenu).map(([key, href]) => (
-                            <Button key={href} asChild variant="ghost" size="sm">
-                                <Link href={href} className={`uppercase ${currentPath === href ? "text-primary font-semibold" : "text-black"}`}>
-                                    {key.charAt(0) + key.slice(1)}
-                                </Link>
-                            </Button>
-                        ))}
-                    </div> */}
-
                     <Button asChild variant={"secondary"} className="hidden sm:flex">
                         <Link href="/contact" className="uppercase">Contact</Link>
                     </Button>

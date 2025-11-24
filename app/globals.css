@@ -267,6 +267,10 @@
     text-align: right;
   }
 
+  .zoomin {
+    @apply hover:scale-110 transition-transform
+  }
+
 }
 
 

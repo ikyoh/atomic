@@ -25,6 +25,7 @@ import phonePicto from '../public/picto-phone.svg';
 const font = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 
@@ -118,7 +119,7 @@ const Nav = async () => {
   const options = await getSiteOptions();
 
   return (
-    <nav className="relative mx-2 hidden md:flex items-center gap-2">
+    <nav className="relative mx-2 hidden sm:flex items-center gap-2">
       {options['navigation'].filter(f => f.is_desktop).map(item => (
         <Button key={item.slug} variant={"link"} asChild size="sm" className="uppercase text-base navListener">
           <Link href={item.slug}>

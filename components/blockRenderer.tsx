@@ -38,9 +38,12 @@ const ParagraphBlock = ({ innerHTML }: { innerHTML: string }) => (
     <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
 );
 
-const ImageBlock = ({ innerHTML, attrs }: { innerHTML: string, attrs: GutenbergBlock["attrs"] }) => (
-    <Picture id={attrs.id} />
-);
+const ImageBlock = ({ innerHTML, attrs }: { innerHTML: string, attrs: GutenbergBlock["attrs"] }) => {
+
+    const className = innerHTML.match(/class="([^"]*)"/)?.[1] || '';
+    return <Picture id={attrs.id} className={className} />
+}
+
 
 const HeadingBlock = ({ innerHTML }: { innerHTML: string }) => {
     const match = innerHTML.match(/<(h[1-6])([^>]*)>(.*?)<\/h[1-6]>/);
@@ -187,7 +190,7 @@ const GridCardsBlock = ({ attrs }: { attrs: any }) => {
                         }`}>
                         <Picture
                             id={attrs.data[`blocks_${index}_image`]}
-                            className={`hover:scale-125 transition-transform object-cover rounded-none! w-full! md:h-full! h-[280px]! mt-0! ${index % 2 === 1 && 'order-last'
+                            className={`zoomin object-cover rounded-none! w-full! md:h-full! h-[280px]! mt-0! ${index % 2 === 1 && 'order-last'
                                 }`}
                         />
                     </div>
@@ -453,13 +456,15 @@ const Picture = async ({ id, className, width, height }: { id: number, className
 
     if (!media) return null;
     return (
-        <Image
-            src={media.source_url}
-            alt={media.alt_text || 'Image'}
-            width={media.media_details.width}
-            height={media.media_details.height}
-            className={className}
-            unoptimized={media.mime_type === "image/svg+xml" ? true : false}
-        />
+        <figure className='overflow-hidden'>
+            <Image
+                src={media.source_url}
+                alt={media.alt_text || 'Image'}
+                width={media.media_details.width}
+                height={media.media_details.height}
+                className={className}
+                unoptimized={media.mime_type === "image/svg+xml" ? true : false}
+            />
+        </figure>
     )
 }
