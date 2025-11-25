@@ -276,7 +276,7 @@
 
 @layer templates {
   .template-services > section {
-    @apply bg-light rounded-xl shadow-xl p-5 sm:p-8 mx-5 md:mx-auto scroll-mt-26;
+    @apply bg-light rounded-xl shadow-xl p-5 sm:p-8 scroll-mt-26;
   }
   .template-services > section > h2 {
     @apply bg-light;
@@ -288,6 +288,6 @@
     @apply bg-background;
   }
   .template-atomic > hr {
-    @apply border-b border-1 border-primary max-w-120 mx-5 md:mx-auto;
+    @apply border-b border-1 border-primary max-w-120
   }
 }

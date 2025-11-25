@@ -35,7 +35,7 @@ export interface GutenbergBlock {
 
 // Individual block components
 const ParagraphBlock = ({ innerHTML }: { innerHTML: string }) => (
-    <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
+    parse(innerHTML)
 );
 
 const ImageBlock = ({ innerHTML, attrs }: { innerHTML: string, attrs: GutenbergBlock["attrs"] }) => {
@@ -43,7 +43,6 @@ const ImageBlock = ({ innerHTML, attrs }: { innerHTML: string, attrs: GutenbergB
     const className = innerHTML.match(/class="([^"]*)"/)?.[1] || '';
     return <Picture id={attrs.id} className={className} />
 }
-
 
 const HeadingBlock = ({ innerHTML }: { innerHTML: string }) => {
     const match = innerHTML.match(/<(h[1-6])([^>]*)>(.*?)<\/h[1-6]>/);

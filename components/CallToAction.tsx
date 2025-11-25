@@ -6,7 +6,7 @@ export default function CallToAction({ title, description, button_label, button_
         <div className="border border-primary rounded-xl p-10 w-full my-20 space-y-10 font-bold">
             <p className="text-center uppercase text-primary px-10">{title}</p>
             <p className="text-center px-10">{description}</p>
-            <div className="flex items-center justify-center gap-5">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
                 {button_label && button_link &&
                     <Button asChild variant={"cta"}>
                         <Link href={button_link} className="uppercase">

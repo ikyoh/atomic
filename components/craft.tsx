@@ -179,7 +179,7 @@ const styles = {
   layout: {
     spacing: "[&>*+*]:mt-6",
     article: "max-w-prose",
-    container: "mx-auto py-10 [&>*]:mx-auto [&>*]:max-w-3xl [&>section:not(.alignfull)]:px-5 md:[&>*]:px-0 space-y-10",
+    container: "mx-auto py-10 [&>*]:mx-auto [&>*]:max-w-3xl px-5 space-y-10",
     section: "py-0 relative",
   },
 };
@@ -257,7 +257,7 @@ export const Prose = ({
 }: BaseProps & HTMLProps) => (
   <div
     dangerouslySetInnerHTML={dangerouslySetInnerHTML}
-    className={cn("[&>*]:mx-auto", baseTypographyStyles, styles.layout.spacing, className)}
+    className={cn("*:mx-auto", baseTypographyStyles, styles.layout.spacing, className)}
     id={id}
   >
     {children}
