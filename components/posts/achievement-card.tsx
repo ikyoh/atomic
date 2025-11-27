@@ -8,10 +8,12 @@ import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "../ui/skeleton";
 
 
+const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_URL;
+
 export default function AchievementCard({ post }: { post: Post }) {
 
   async function fetchMedia() {
-    const res = await fetch(`http://acfpro.local/wp-json/wp/v2/media/${post.featured_media}`);
+    const res = await fetch(`${baseUrl}/wp-json/wp/v2/media/${post.featured_media}`);
     if (!res.ok) {
       throw new Error("Failed to fetch media");
     }
