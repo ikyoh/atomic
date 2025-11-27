@@ -8,6 +8,7 @@ import React from "react";
 
 const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_URL;
 
+
 export default function AchievementsClient() {
 
     const searchParams = useSearchParams()
