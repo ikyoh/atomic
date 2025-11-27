@@ -48,7 +48,7 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
                 ))}
             </CarouselContent>
 
-            <div className="z-2 absolute bottom-0 h-1/2 md:h-auto left-0 right-0 flex flex-col items-center justify-start pb-10">
+            <div className="z-2 absolute bottom-20 sm:bottom-0 h-1/2 md:h-auto left-0 right-0 flex flex-col items-center justify-start pb-10">
                 {title &&
                     <h1 className="px-5 text-[2.5rem] font-black! text-center text-white uppercase text-shadow-primary text-shadow-[0_5px_20px] mb-3">
                         {title}
@@ -60,7 +60,7 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
                     </div>
                 }
             </div>
-            <Link href={"#content"} className="z-3 md:hidden animate-bounce flex items-center justify-center text-white size-12 bg-neutral-500/50 rounded-full absolute bottom-25 left-1/2 -translate-x-1/2">
+            <Link href={"#content"} className="z-3 md:hidden animate-bounce flex items-center justify-center text-white size-12 bg-neutral-500/50 rounded-full absolute bottom-35 left-1/2 -translate-x-1/2">
                 <ChevronDown />
             </Link>
             <CarouselPrevious className="ml-10 md:ml-60 scale-200 text-white" />
