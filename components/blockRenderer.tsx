@@ -189,9 +189,9 @@ const GridCardsBlock = ({ attrs }: { attrs: any }) => {
                         }`}>
                         <Picture
                             id={attrs.data[`blocks_${index}_image`]}
-                            figureClassName={`rounded-none! w-full! md:h-full! h-[280px]! mt-0! bg-yellow-500 ${index % 2 === 1 && 'order-last'
+                            figureClassName={`rounded-none! w-full! md:h-full! h-[280px]! mt-0! ${index % 2 === 1 && 'order-last'
                                 }`}
-                            className='zoomin object-cover w-full! md:h-full!'
+                            className='zoomin object-cover w-full! h-full!'
                         />
                     </div>
                     <div className="p-5">

@@ -20,6 +20,7 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
                 loop: true,
             }}
             isHero
+            className="relative"
         >
             <CarouselContent className={cn("h-[calc(100vh-155px)] md:h-[445px]")}>
                 {youtubeID &&
@@ -59,8 +60,7 @@ export default function HeroCarousel({ images, title, subtitle, isFullscreen = f
                     </div>
                 }
             </div>
-
-            <Link href={"#content"} className="md:hidden animate-bounce flex items-center justify-center text-white size-12 bg-neutral-500/50 rounded-full absolute bottom-25 -translate-x-1/2 left-1/2">
+            <Link href={"#content"} className="z-3 md:hidden animate-bounce flex items-center justify-center text-white size-12 bg-neutral-500/50 rounded-full absolute bottom-25 left-1/2 -translate-x-1/2">
                 <ChevronDown />
             </Link>
             <CarouselPrevious className="ml-10 md:ml-60 scale-200 text-white" />
