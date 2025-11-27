@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { Container, Main } from "@/components/craft";
+import { Main } from "@/components/craft";
 import GoTop from "@/components/GoTop";
 import Logo from "@/components/logo";
 import { MobileNav } from "@/components/nav/mobile-nav";
@@ -30,9 +30,9 @@ const font = FontSans({
 
 
 export const metadata: Metadata = {
-  title: "WordPress & Next.js Starter by 9d8",
+  title: "Atomic Néon - Enseigne & Signalétique - Alpes Maritimes (06) - Var (83)",
   description:
-    "A starter template for Next.js with WordPress as a headless CMS.",
+    "Atomic Néon conçoit, fabrique et installe des enseignes et solutions de signalétique sur mesure dans les Alpes Maritimes (06) et le Var (83)",
   metadataBase: new URL(siteConfig.site_domain),
   alternates: {
     canonical: "/",
@@ -137,15 +137,15 @@ const Footer = async () => {
   const options = await getSiteOptions();
 
   return (
-    <footer className="bg-secondary mb-10 md:mb-0">
-      <Container className="flex flex-col md:flex-row justify-between space-y-0">
+    <footer className="bg-secondary mb-[65px] sm:mb-0 py-5" >
+      <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-5">
         <p className="text-muted-foreground text-center mb-0!">
           &copy; {new Date().getFullYear()} Atomic Néon - Tous droits réservés
         </p>
         <Link href="/mentions-legales" className="text-muted-foreground underline!">
           Mentions légales
         </Link>
-      </Container>
-    </footer>
+      </div>
+    </footer >
   );
 };

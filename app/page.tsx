@@ -31,7 +31,7 @@ export default async function Page({
         <HeroCarousel isFullscreen images={page.acf.carrousel} youtubeID={page.acf.youtube_id} />
       }
 
-      <Container id="content" className="scroll-mt-22">
+      <Container id="content">
         <h1 className="text-center font-black! uppercase">{page.title.rendered}</h1>
         {/* <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} /> */}
         <BlockRenderer blocks={blocks} />

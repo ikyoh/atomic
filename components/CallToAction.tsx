@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export default function CallToAction({ title, description, button_label, button_link }: { title: string, description: string, button_label?: string, button_link?: string }) {
     return (
-        <div className="border border-primary rounded-xl p-10 w-full my-20 space-y-10 font-bold">
+        <div className="border border-primary rounded-xl p-10 my-20 space-y-10 font-bold">
             <p className="text-center uppercase text-primary px-10">{title}</p>
             <p className="text-center px-10">{description}</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">

@@ -4,27 +4,24 @@ import Hero from "@/components/hero";
 import HeroCarousel from "@/components/HeroCarousel";
 import SubNavigation from "@/components/subNavigation";
 import { cn } from "@/lib/utils";
-import { getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
+import { getAllPages, getFeaturedMediaById, getPageBySlug } from "@/lib/wordpress";
 import { siteConfig } from "@/site.config";
 import { parse } from "@wordpress/block-serialization-default-parser";
 import { Metadata } from "next";
-import NotFound from "../not-found";
 import Achievements from "./achievements";
 import Contact from "./contact";
 import Products from "./products";
 
 
-export function generateStaticParams() {
-  return [
-    { slug: "qui-sommes-nous" },
-    { slug: "services" },
-    { slug: "produits" },
-    { slug: "realisations" },
-    { slug: "contact" },
-    { slug: "mentions-legales" },
-  ];
+export async function generateStaticParams() {
+  const posts = await getAllPages();
+  return posts.filter(f => f.slug !== "accueil").map((post) => ({
+    slug: post.slug,
+  }))
 }
 
+export const dynamic = "force-static";
+export const dynamicParams = false
 
 export async function generateMetadata({
   params,
@@ -94,8 +91,6 @@ export default async function Page({
   const page = await getPageBySlug(slug);
   const featuredMedia = page?.featured_media === 0 ? "" : await getFeaturedMediaById(page.featured_media);
 
-  if (!page) return <NotFound />;
-
   const parsedBlocks = parse(page.content.raw ? page.content.raw : "");
   const blocks = parsedBlocks.map(block => ({
     ...block,
@@ -103,39 +98,36 @@ export default async function Page({
   }));
   return (
     <>
-
-      {/* <ProductsMegaMenu categories={categories} /> */}
       {page.acf.carrousel ?
         <HeroCarousel images={page.acf.carrousel} title={page.title.rendered} subtitle={page.acf.subtitle} />
         : featuredMedia ?
           <Hero featuredURL={featuredMedia && typeof featuredMedia !== 'string' ? featuredMedia.source_url : ''} title={page.title.rendered} subtitle={page.acf.subtitle} /> : null
       }
-      <div id="content" className="scroll-mt-16">
 
-        <Container className={cn("relative",
-          page.template === "page-services" ? 'template-services' : '',
-          page.template === "page-atomic" ? 'template-atomic' : ''
-        )}>
+      <Container id="content" className={cn("relative",
+        page.template === "page-services" ? 'template-services' : '',
+        page.template === "page-atomic" ? 'template-atomic' : ''
+      )}>
 
-          {
-            page.template && page.template === "page-realisations" && (
-              <Achievements />
-            )
-          }
+        {
+          page.template && page.template === "page-realisations" && (
+            <Achievements />
+          )
+        }
 
-          {page.acf['navigation_interne'] &&
-            <SubNavigation items={page.acf['navigation_interne']} />
-          }
+        {page.acf['navigation_interne'] &&
+          <SubNavigation items={page.acf['navigation_interne']} />
+        }
 
-          {page.template && page.template === "page-produits" && (
-            <Products />
-          )}
-          <BlockRenderer blocks={blocks} />
+        {page.template && page.template === "page-produits" && (
+          <Products />
+        )}
+        <BlockRenderer blocks={blocks} />
 
-          {page.template && page.template === "page-contact" && (<Contact />)}
+        {page.template && page.template === "page-contact" && (<Contact />)}
 
-        </Container >
-      </div >
+      </Container >
+
     </>
   );
 }

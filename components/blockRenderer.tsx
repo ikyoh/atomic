@@ -189,8 +189,9 @@ const GridCardsBlock = ({ attrs }: { attrs: any }) => {
                         }`}>
                         <Picture
                             id={attrs.data[`blocks_${index}_image`]}
-                            className={`zoomin object-cover rounded-none! w-full! md:h-full! h-[280px]! mt-0! ${index % 2 === 1 && 'order-last'
+                            figureClassName={`rounded-none! w-full! md:h-full! h-[280px]! mt-0! bg-yellow-500 ${index % 2 === 1 && 'order-last'
                                 }`}
+                            className='zoomin object-cover w-full! md:h-full!'
                         />
                     </div>
                     <div className="p-5">
@@ -450,12 +451,12 @@ const BlockRenderer = ({ blocks }: { blocks: GutenbergBlock[] | any }) => {
 
 export default BlockRenderer;
 
-const Picture = async ({ id, className, width, height }: { id: number, className?: string, width?: number, height?: number }) => {
+const Picture = async ({ id, className, width, height, figureClassName }: { id: number, className?: string, figureClassName?: string, width?: number, height?: number }) => {
     const media = await getMediaById(id);
 
     if (!media) return null;
     return (
-        <figure className='overflow-hidden'>
+        <figure className={`overflow-hidden ${figureClassName || ''}`}>
             <Image
                 src={media.source_url}
                 alt={media.alt_text || 'Image'}

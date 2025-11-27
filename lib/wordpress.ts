@@ -3,7 +3,6 @@
 // Types are imported from `wp.d.ts`
 
 import { revalidateTag } from "next/cache";
-import { headers } from "next/headers";
 import querystring from "query-string";
 
 import {
@@ -25,6 +24,7 @@ if (!baseUrl) {
 
 // Utility type for fetch options
 interface FetchOptions {
+  cache?: RequestCache;
   next?: {
     revalidate?: number | false;
     tags?: string[];
@@ -39,14 +39,16 @@ function getUrl(path: string, query?: Record<string, any>) {
 
 // Default fetch options for WordPress API calls
 const defaultFetchOptions: FetchOptions = {
+  cache: "force-cache",
   next: {
     tags: ["wordpress"],
-    revalidate: 0,
-    //revalidate: 36000, // Revalidate every 10 hours by default
+    revalidate: false,
+    //revalidate: 3600, // Revalidate every hour (ISR)
   },
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
+    "User-Agent": "Next.js WordPress Client",
   },
 };
 
@@ -63,15 +65,11 @@ async function wordpressFetch<T>(
   url: string,
   options: FetchOptions = {}
 ): Promise<T> {
-  const headersList = await headers();
-  const userAgent = headersList.get("user-agent") || "Next.js WordPress Client";
-
   const response = await fetch(url, {
     ...defaultFetchOptions,
     ...options,
     headers: {
       ...defaultFetchOptions.headers,
-      "User-Agent": userAgent,
       ...options.headers,
     },
   });

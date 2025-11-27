@@ -64,17 +64,6 @@ export default function Contact() {
         },
     })
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData(e.target);
-    //     const res = await fetch('http://acfpro.local/wp-json/contact-form-7/v1/contact-forms/1040/feedback', {
-    //         method: 'POST',
-    //         body: formData,
-    //     });
-    //     const data = await res.json();
-    //     console.log(data); // Affiche la réponse (succès ou erreur)
-    // };
-
 
     const onSubmit: SubmitHandler<Inputs> = async data => {
 

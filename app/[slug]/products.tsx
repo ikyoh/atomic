@@ -1,7 +1,4 @@
-import { Container, Section } from "@/components/craft";
 import { ProductCategoryCard } from "@/components/ProductCategoryCard";
-import ProductsMegaMenu from "@/components/productsMegaMenu";
-import ProductsMobileMenu from "@/components/productsMobileMenu";
 import { getProductsCategories, getProductsOfCategoryById } from "@/lib/wordpress";
 
 
@@ -19,17 +16,15 @@ export default async function Products() {
     console.log('productsByCategoryies', productsByCategoryies)
 
     return (
-        <Section>
-            <ProductsMegaMenu categories={categories} productsByCategoryies={productsByCategoryies} />
-            <ProductsMobileMenu categories={categories} />
-            <Container>
-                <div className="flex flex-wrap justify-center">
-                    {categories?.filter(f => f.parent === 0)?.sort((a, b) => (a.acf.order ?? 0) - (b.acf.order ?? 0)).map((category) => (
-                        <ProductCategoryCard key={'product-category-' + category.id} category={category}
-                            className="basis-1/2 md:basis-1/3" />
-                    ))}
-                </div>
-            </Container>
-        </Section>
+        <>
+            {/* <ProductsMegaMenu categories={categories} productsByCategoryies={productsByCategoryies} />
+            <ProductsMobileMenu categories={categories} /> */}
+            <div className="flex flex-row flex-wrap justify-center">
+                {categories?.filter(f => f.parent === 0)?.sort((a, b) => (a.acf.order ?? 0) - (b.acf.order ?? 0)).map((category) => (
+                    <ProductCategoryCard key={'product-category-' + category.id} category={category}
+                        className="basis-1/2 md:basis-1/3" />
+                ))}
+            </div>
+        </>
     );
 }

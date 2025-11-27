@@ -153,9 +153,9 @@ const styles = {
       "[&_td]:border-r [&_td]:px-4 [&_td]:py-2 [&_td]:last:border-0",
     ],
     media: [
-      "[&_img]:rounded-lg [&_img]:my-4 [&_img]:max-w-full [&_img]:h-auto",
+      "[&_img]:[&_img]:my-4 [&_img]:max-w-full [&_img]:h-auto",
       "[&_video]:rounded-lg [&_video]:border [&_video]:my-4",
-      "[&_figure]:my-4",
+      "[&_figure]:my-4 [&_figure]:rounded-lg [&_figure]:overflow-hidden",
       "[&_figure_img]:my-0",
       "[&_figure_figcaption]:text-sm [&_figure_figcaption]:mt-2 [&_figure_figcaption]:text-muted-foreground",
     ],
@@ -179,7 +179,7 @@ const styles = {
   layout: {
     spacing: "[&>*+*]:mt-6",
     article: "max-w-prose",
-    container: "mx-auto py-10 [&>*]:mx-auto [&>*]:max-w-3xl px-5 space-y-10",
+    container: "scroll-mt-22 py-10 space-y-10 [&>*:not(.wp-block-group)]:max-w-3xl [&>*:not(.wp-block-group)]:mx-5 md:[&>*:not(.wp-block-group)]:mx-auto",
     section: "py-0 relative",
   },
 };
@@ -223,7 +223,7 @@ export const Section = ({ children, className, id }: BaseProps) => (
   </section>
 );
 
-export const Container = ({ children, className, id }: BaseProps) => (
+export const Container = ({ children, className, id = "content" }: BaseProps) => (
   <div className={cn(styles.layout.container, className)} id={id}>
     {children}
   </div>
