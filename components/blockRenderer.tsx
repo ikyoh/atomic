@@ -364,7 +364,8 @@ const UnderTakingBlock = ({ attrs }: { attrs: any }) => {
         <div className='bg-light rounded-md shadow-md p-5 flex items-start gap-5'>
             <Picture
                 id={attrs.data.icon}
-                className='h-20 w-20 bg-neutral-300 p-3 rounded-full! my-0! object-cover'
+                figureClassName="flex-none flex items-center justify-center h-20! w-20! bg-neutral-300 p-4 rounded-full!"
+                className="w-full h-full my-0!"
             />
             <div>
                 <h3 className="text-xl font-bold">{attrs.data.title}</h3>
