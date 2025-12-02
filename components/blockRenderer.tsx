@@ -72,7 +72,7 @@ const EmbedBlock = ({ attrs, innerHTML }: { attrs: GutenbergBlock["attrs"], inne
 const GroupBlock = ({ innerHTML, innerBlocks, attrs, innerContent }: { innerHTML: string; innerBlocks: GutenbergBlock[], attrs: GutenbergBlock["attrs"], innerContent: string }) => {
 
     const className = innerHTML.match(/class="([^"]*)"/)?.[1] || '';
-    const id = innerHTML.match(/id="([^"]*)"/)?.[1] || '';
+    const id = innerHTML.match(/id="([^"]*)"/)?.[1] || false;
     const TagName = attrs.tagName ? attrs.tagName : "div"
 
     if (attrs && attrs.layout && attrs.layout.type === 'grid') return (
@@ -86,7 +86,7 @@ const GroupBlock = ({ innerHTML, innerBlocks, attrs, innerContent }: { innerHTML
         </Flex >
     )
     return (
-        <TagName id={id} className={className}>
+        <TagName {...(id && { "id": id })} className={className}>
             <BlockRenderer blocks={innerBlocks} />
         </TagName>
     )
@@ -112,9 +112,9 @@ const LogosBlock = ({ attrs }: { attrs: any }) => {
                                 <div className="flex items-center space-x-4">
                                     <Picture
                                         id={logo}
-                                        className="w-12 h-auto"
-                                        width={80}
-                                        height={80}
+                                        className="w-14 h-auto"
+                                        width={58}
+                                        height={58}
                                     />
                                 </div>
                             </div>
@@ -141,7 +141,38 @@ const LogosBlock = ({ attrs }: { attrs: any }) => {
 
 };
 
-const CarouselBlock = ({ attrs }: { attrs: any }) => {
+const CarouselBlock = ({ attrs, innerHTML }: { attrs: any, innerHTML: string }) => {
+
+    return (
+        <Carousel
+            opts={{
+                align: "start",
+                loop: true,
+            }}
+            className="max-w-screen relative p-0"
+            isHero={true}
+        >
+            <CarouselContent className=''>
+                {attrs.data.gallery.map((item: number, index: number) => (
+                    <CarouselItem
+                        key={"carousel_" + index}
+                        className="h-150 w-full p-0!"
+                    >
+                        <Picture
+                            id={item}
+                            figureClassName='h-full w-full my-0! rounded-none!' className="object-cover h-full! w-full!"
+                        />
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className='left-12 md:left-12' />
+            <CarouselNext className='right-12 md:right-12' />
+        </Carousel>
+    )
+
+};
+
+const CarouselLabelBlock = ({ attrs }: { attrs: any }) => {
 
     return (
 
@@ -184,14 +215,14 @@ const GridCardsBlock = ({ attrs }: { attrs: any }) => {
         <div className="flex flex-col gap-8">
 
             {Array.from({ length: attrs.data.blocks }).map((_, index) => (
-                <div key={"gridcards_" + index} className="rounded-2xl bg-neutral-200 dark:bg-neutral-900 overflow-hidden min-h-[280px] md:grid md:grid-cols-2 shadow-md">
+                <div key={"gridcards_" + index} className="rounded-2xl bg-light overflow-hidden min-h-[280px] md:grid md:grid-cols-2 shadow-md">
                     <div className={`overflow-hidden ${index % 2 === 1 && 'order-last'
                         }`}>
                         <Picture
                             id={attrs.data[`blocks_${index}_image`]}
                             figureClassName={`rounded-none! w-full! md:h-full! h-[280px]! mt-0! ${index % 2 === 1 && 'order-last'
                                 }`}
-                            className='zoomin object-cover w-full! h-full!'
+                            className='zoomin object-cover w-full! md:h-full!'
                         />
                     </div>
                     <div className="p-5">
@@ -260,22 +291,22 @@ const AccordionCardsBlock = ({ attrs }: { attrs: any }) => {
 const AccordionPictureBlock = ({ attrs }: { attrs: any }) => {
 
     return (
-        <div className='flex items-center justify-center'>
+        <div className=''>
             <Accordion type="single" collapsible defaultValue="item-0">
-                <Tabs defaultValue="item-0" className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 items-center" orientation="vertical">
-                    <TabsList className="space-y-2 h-auto bg-background">
+                <Tabs defaultValue="item-0" className="w-full grid grid-cols-1 md:grid-cols-3 gap-5 items-center" orientation="vertical">
+                    <TabsList className="space-y-3 h-auto w-full md:col-span-2 bg-transparent">
                         {Array.from({ length: attrs.data.blocks }).map((_, index) => (
-                            <AccordionItem value={"item-" + index} key={"AccordionPictureBlockItem" + index} className="bg-primary data-[state=open]:bg-white data-[state=open]:border data-[state=open]:border-primary rounded-sm">
-                                <AccordionTrigger className="font-bold not-data-[state=open]:text-white dark:not-data-[state=open]:text-white data-[state=open]:text-primary dark:data-[state=open]:text-primary" asChild>
-                                    <TabsTrigger value={"item-" + index} className="h-full py-2 uppercase">
+                            <AccordionItem value={"item-" + index} key={"AccordionPictureBlockItem" + index} className=" outline-primary outline-3 -outline-offset-3 [&_h3]:mt-0! [&_h3]:mb-0! rounded-sm bg-primary data-[state=open]:bg-white">
+                                <AccordionTrigger asChild>
+                                    <TabsTrigger value={"item-" + index} className="uppercase font-bold text-lg py-2 not-data-[state=open]:text-white dark:not-data-[state=open]:text-white data-[state=open]:text-primary dark:data-[state=open]:text-primary">
                                         {attrs.data[`blocks_${index}_title`]}
                                     </TabsTrigger>
                                 </AccordionTrigger>
                                 <AccordionContent className="px-3 text-black">
-                                    <div className="font-bold text-sm leading-4 mb-1">
+                                    <div className="font-bold text-base leading-4 mb-1">
                                         {attrs.data[`blocks_${index}_subtitle`]}
                                     </div>
-                                    <p className="text-sm! leading-4! mb-0!">
+                                    <p className="mb-0! text-base/5!">
                                         {attrs.data[`blocks_${index}_content`]}
                                     </p>
                                 </AccordionContent>
@@ -284,19 +315,20 @@ const AccordionPictureBlock = ({ attrs }: { attrs: any }) => {
                         }
 
                     </TabsList>
-                    <div className="bg-black rounded-3xl p-5 flex-none w-full h-[280px] md:w-[380px] md:h-[600px] relative">
+                    <div className="bg-black rounded-3xl p-5 flex-none w-full h-[280px] md:h-[600px] relative">
                         {Array.from({ length: attrs.data.blocks }).map((_, index) => (
                             <TabsContent key={"tabcontent-" + index} value={"item-" + index} className="h-full w-full">
                                 <Picture
                                     id={attrs.data[`blocks_${index}_image`]}
-                                    className="object-cover w-full! h-full! mt-0! border border-white/50"
+                                    className="object-cover! w-full! h-full! mt-0! border border-white/50 rounded-xl!"
+                                    figureClassName='my-0! h-full! overflow-hidden border-primary'
                                 />
                             </TabsContent>
                         ))}
                     </div>
                 </Tabs >
             </Accordion >
-        </div>
+        </div >
     )
 
 };
@@ -404,6 +436,7 @@ const blockMap: {
     'core/embed': EmbedBlock,
     'acf/logos': LogosBlock,
     'acf/carousel': CarouselBlock,
+    'acf/carousel-label': CarouselLabelBlock,
     'acf/grid-cards': GridCardsBlock,
     'acf/accordion-cards': AccordionCardsBlock,
     'acf/timeline': TimelineBlock,
@@ -461,7 +494,7 @@ const Picture = async ({ id, className, width, height, figureClassName }: { id: 
             <Image
                 src={media.source_url}
                 alt={media.alt_text || 'Image'}
-                width={media.media_details.width}
+                width={width || media.media_details.width}
                 height={media.media_details.height}
                 className={className}
                 unoptimized={media.mime_type === "image/svg+xml" ? true : false}

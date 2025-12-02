@@ -41,7 +41,7 @@ const Nav = ({ className, children, id }: NavProps) => {
                 </Link>
                 {children}
                 <div className="flex items-center gap-2">
-                    <Button asChild variant={"secondary"} className="hidden sm:flex">
+                    <Button asChild variant={"secondary"} className="hidden :flex">
                         <Link href="/contact" className="uppercase">Contact</Link>
                     </Button>
                     <MobileNav />

@@ -95,7 +95,7 @@ const styles = {
       "[&_h5]:text-base [&_h5]:bold [&_h5]:uppercase [&_h5]:tracking-tight",
       "[&_h6]:text-base [&_h6]:bold [&_h6]:uppercase [&_h6]:tracking-tight",
       // Text elements
-      "[&_p]:text-sm/4 [&_p]:mb-4",
+      "[&_p]:text-base [&_p]:mb-4",
       "[&_strong]:font-semibold",
       "[&_em]:italic",
       "[&_del]:line-through",

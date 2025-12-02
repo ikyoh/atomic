@@ -139,7 +139,7 @@ function Carousel({
         {...props}
       >
         {children}
-        <div className={cn("flex items-center justify-center gap-2 z-20 absolute w-full", isHero ? "bottom-2" : "-bottom-4")}>
+        <div className={cn("flex items-center justify-center gap-2 z-20 absolute w-full", isHero ? "bottom-4" : "-bottom-4")}>
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}

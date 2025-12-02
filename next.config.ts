@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  crossOrigin: "anonymous",
+  allowedDevOrigins: ["http://acfpro.local/**"],
   trailingSlash: true, // Ajoute des slashes finaux pour la compatibilité statique
   images: {
-    contentDispositionType: "attachment",
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    //contentDispositionType: "attachment",
+    //contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     dangerouslyAllowSVG: true,
     unoptimized: true, // Requis pour l'export statique
     remotePatterns: [
